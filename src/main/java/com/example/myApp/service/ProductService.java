@@ -4,18 +4,10 @@ import com.example.myApp.model.Product;
 import com.example.myApp.repository.ProductRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class ProductService {
-
-//    List<Product> products = new ArrayList<>(Arrays.asList(
-//            new Product(101, "Mobile", 20000),
-//            new Product(102,"Laptop", 50000),
-//            new Product(103, "Mouse", 1500))
-//    );
 
     ProductRepo repo;
 

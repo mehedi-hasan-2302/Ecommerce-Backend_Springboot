@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class ProductController {
 
 
@@ -22,7 +23,7 @@ public class ProductController {
         return service.getProducts();
     }
 
-    @PostMapping("/products/{prodId}")
+    @GetMapping("/products/{prodId}")
     public Product getProductById(@PathVariable int prodId){
         return service.getProductById(prodId);
     }
