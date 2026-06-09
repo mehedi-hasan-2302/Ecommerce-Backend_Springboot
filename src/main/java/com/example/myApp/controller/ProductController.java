@@ -3,6 +3,9 @@ package com.example.myApp.controller;
 import com.example.myApp.model.Product;
 import com.example.myApp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,13 +22,16 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public List<Product> getAllProducts(){
-        return service.getProducts();
+    public ResponseEntity<List<Product>> getAllProducts(){
+        return new ResponseEntity<>(service.getProducts(), HttpStatus.OK);
     }
 
     @GetMapping("/products/{prodId}")
-    public Product getProductById(@PathVariable int prodId){
-        return service.getProductById(prodId);
+    public ResponseEntity<Product> getProductById(@PathVariable int prodId){
+        Product prod = service.getProductById(prodId);
+        if(prod!=null) return new ResponseEntity<>(prod, HttpStatus.OK);
+        else return new ResponseEntity<>(prod, HttpStatus.NOT_FOUND);
+
     }
 
 
